@@ -1,3 +1,4 @@
+import org.w3c.dom.ranges.RangeException
 object Main {
     //1, 2
     def sum(arr: List[Int]): Int = {
@@ -7,6 +8,16 @@ object Main {
             arr.head + sum(arr.tail)
     }
 
+    def getItemByIndex(list: List[Int], index: Int, currentIndex: Int = 0): Int = {
+        if(list.isEmpty)
+            sys.exit(1)
+        
+        if(currentIndex == index)
+            list.head
+        else
+            getItemByIndex(list.tail, index, currentIndex+1)
+    }
+
     // 3
     def indexOfMin(arr: List[Int], currentIndex: Int, index: Int): Int = {
         if(currentIndex == arr.length - 1)
@@ -14,7 +25,7 @@ object Main {
         else
         {
             var newMinIndex: Int = index
-            if(arr.apply(index) > arr.apply(currentIndex))
+            if(getItemByIndex(arr, index) > getItemByIndex(arr, currentIndex))
                 newMinIndex = currentIndex
 
             indexOfMin(arr, currentIndex + 1, newMinIndex)
