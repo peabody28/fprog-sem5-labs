@@ -1,3 +1,3 @@
-.metals/
-.vscode/
-.scala-build/
+*/.metals/
+*/.vscode/
+*/.scala-build/
